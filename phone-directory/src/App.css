@@ -2,7 +2,7 @@
     padding: 20px;
 }
 .custom-btn {
-    padding: 10px;
+    padding: 6px;
     border: none;
     margin-right: 10px;
     text-transform: uppercase;
@@ -31,9 +31,22 @@
     word-wrap: break-word;
     padding-right: 10px;
 }
-.name-heading, .phone-heading {
+.name-heading, .phone-heading, .action-btn {
     font-size: 1rem;
     font-weight: 600;
     color: #808080;
     text-transform: uppercase;
 }
+  
+.action-btn img {
+    width: 20px;
+    height: 20px;
+    margin: 5px;
+}
+.delete-btn {
+    background: red;
+    color: black;
+}
+.edit-btn {
+    color: #0000ff;
+}               
