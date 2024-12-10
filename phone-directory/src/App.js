@@ -16,6 +16,17 @@ function App() {
       phone: "9876543210"
     }
   ]
+  
+  const deleteSubscriber = (subscriberId) => {
+    alert("Are you sure you want to delete this subscriber?");
+     subscribers = subscribers.filter(subscriber => subscriber.id !== subscriberId);
+    console.log(subscribers);
+  } 
+
+  const clickHandler = () => {
+    alert("Delete clicked");
+  }
+
   return (
     // <div>
     //   <Header />
@@ -43,8 +54,9 @@ function App() {
                 <span className="grid-item">{subscriber.name}</span>
                 <span className="grid-item">{subscriber.phone}</span>
                 <span className="grid-item action-btn">
-                  <button className="custom-btn delete-btn">Delete</button> 
-                  {/* <button className="custom-btn edit-btn">Edit</button> */}
+                  {/* <button className="custom-btn delete-btn" onClick={() => deleteSubscriber(subscriber.id)}>Delete</button>  */}
+                  {/* <button className="custom-btn delete-btn" onClick={clickHandler.bind(this, " Delete handler clicked")}>Delete</button> */}
+                  <button className="custom-btn delete-btn" onClick={()=>clickHandler()}>Delete</button>
                 </span>
               </div>
             )
@@ -55,3 +67,19 @@ function App() {
 }
 
 export default App;
+
+
+// import React from 'react';
+
+// import LuckyThree from './game/LuckyThree.js';
+
+// const idArr = ["numberCard1", "numberCard2", "numberCard3"];
+// const colorsArr = ["#ff5e5e", "#66b266", "#5d5dff"];
+
+// const App = function () {
+//   return (
+//     <LuckyThree idArr={idArr} colorsArr={colorsArr} />
+//   )
+// }
+
+// export default App;
