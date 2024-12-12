@@ -1,31 +1,45 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import Header from "./Header.js";
-import './App.css'
-
+import "./App.css";
 
 function App() {
-  let subscribers = [
+  // let subscribers = [
+  //   {
+  //     id: 1,
+  //     name: "Shilpa",
+  //     phone: "9876543210"
+  //   },
+  //   {
+  //     id: 2,
+  //     name: "Srishti",
+  //     phone: "9876543210"
+  //   }
+  // ]
+
+  // Initialize the subscribers state with useState
+  const [subscribers, setSubscribers] = useState([
     {
       id: 1,
       name: "Shilpa",
-      phone: "9876543210"
+      phone: "9876543210",
     },
-    {
-      id: 2,
-      name: "Srishti",
-      phone: "9876543210"
-    }
-  ]
-  
+  ]);
+
+  useEffect(() => {
+    console.log("Subscribers have been updated:", subscribers);
+  }, [subscribers]);
+
   const deleteSubscriber = (subscriberId) => {
     alert("Are you sure you want to delete this subscriber?");
-     subscribers = subscribers.filter(subscriber => subscriber.id !== subscriberId);
+    subscribers = subscribers.filter(
+      (subscriber) => subscriber.id !== subscriberId
+    );
     console.log(subscribers);
-  } 
+  };
 
   const clickHandler = () => {
     alert("Delete clicked");
-  }
+  };
 
   return (
     // <div>
@@ -40,15 +54,18 @@ function App() {
     //   {/* <input type="text" id="name" placeholder="Type here" defaultValue="Karthi" /> */}
     // </div>
     <div>
-      <Header heading="Phone Directory"/>
-        <div className="component-body-container">
-          <button className="custom-btn add-btn">Add</button>
-          <div className="grid-container heading-container">
-            <span className="grid-item name-heading">Name</span>
-            <span className="grid-item phone-heading">Phone</span>
-            <span className="grid-item action-btn">Action</span>
-          </div>
-          {subscribers.map((subscriber) => {
+      <Header heading="Phone Directory" />
+      <div className="component-body-container">
+        <button className="custom-btn add-btn">Add</button>
+        <div className="grid-container heading-container">
+          <span className="grid-item name-heading">Name</span>
+          <span className="grid-item phone-heading">Phone</span>
+          <span className="grid-item action-btn">Action</span>
+        </div>
+        {subscribers.length === 0 ? (
+          <div className="no-subscribers">No subscribers available</div>
+        ) : (
+          subscribers.map((subscriber) => {
             return (
               <div key={subscriber.id} className="grid-container">
                 <span className="grid-item">{subscriber.name}</span>
@@ -56,18 +73,23 @@ function App() {
                 <span className="grid-item action-btn">
                   {/* <button className="custom-btn delete-btn" onClick={() => deleteSubscriber(subscriber.id)}>Delete</button>  */}
                   {/* <button className="custom-btn delete-btn" onClick={clickHandler.bind(this, " Delete handler clicked")}>Delete</button> */}
-                  <button className="custom-btn delete-btn" onClick={()=>clickHandler()}>Delete</button>
+                  <button
+                    className="custom-btn delete-btn"
+                    onClick={() => clickHandler()}
+                  >
+                    Delete
+                  </button>
                 </span>
               </div>
-            )
-          })}
-        </div>
-    </div>   
+            );
+          })
+        )}
+      </div>
+    </div>
   );
 }
 
 export default App;
-
 
 // import React from 'react';
 

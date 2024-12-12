@@ -51,6 +51,7 @@ class AddSubscriber extends Component{
             name:'',
             phone:''
         }
+        console.log("constructor is called");
     }
     inputChangedHandler=(e) => {
      const state =  this.state;
@@ -59,7 +60,11 @@ class AddSubscriber extends Component{
      console.log(this.state);
      
     }
+    componentDidMount(){
+        console.log("Component did mount called");    
+    }
     render(){
+        console.log("render is called");
         const {name, phone} = this.state
         return(
             <div>
