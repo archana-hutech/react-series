@@ -1,4 +1,4 @@
-.component-body-container {
+/* .component-body-container {
     padding: 20px;
 }
 .custom-btn {
@@ -14,7 +14,7 @@
 .add-btn {
     background: #7ab97a;
     color: #fff;
-}
+} */
 .grid-container {
     display: grid;
     grid-template-columns: 40% 30% auto;
