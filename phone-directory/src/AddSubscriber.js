@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import Header from "./Header.js";
 import "./AddSubscriber.css";
+import {Link} from "react-router-dom"
 // function AddSubscriber() {
 //   return (
 //     <div>
@@ -51,27 +52,32 @@ class AddSubscriber extends Component{
             name:'',
             phone:''
         }
-        console.log("constructor is called");
     }
     inputChangedHandler=(e) => {
      const state =  this.state;
      state[e.target.name]=e.target.value
      this.setState(state)
-     console.log(this.state);
+    //  console.log(this.state);
      
     }
-    componentDidMount(){
-        console.log("Component did mount called");    
+    // componentDidMount(){
+    //     console.log("Component did mount called");    
+    // }
+    
+    onFormSubmited = (e) =>{
+       e.preventDefault()
+       this.props.addSubscriberHandler(this.state)
+       this.setState({id:0, name:'', phone:''})
     }
     render(){
-        console.log("render is called");
+        // console.log("render is called");
         const {name, phone} = this.state
         return(
             <div>
                  <Header heading="Add Subscriber" />
                   <div className="component-body-container">
-                    <button className="custom-btn">Back</button>
-                    <form action="" className="subscriber-form">
+                    <Link to={"/"}><button className="custom-btn">Back</button></Link>
+                    <form action="" className="subscriber-form" onSubmit={this.onFormSubmited.bind(this)}>
                       <label htmlFor="name" className="label-control">
                         Name:
                       </label>

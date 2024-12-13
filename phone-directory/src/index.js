@@ -4,11 +4,14 @@ import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
 import AddSubscriber from './AddSubscriber';
+import ShowSubscribers from './ShowSubscribers'
 import './common/common.css'
+import PhoneDirectory from './PhoneDirectory';
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <React.StrictMode>
-    <App />
+    {/* <App /> */}
+    <PhoneDirectory />
   </React.StrictMode>
 );
 
