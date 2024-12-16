@@ -7,11 +7,13 @@ import AddSubscriber from './AddSubscriber';
 import ShowSubscribers from './ShowSubscribers'
 import './common/common.css'
 import PhoneDirectory from './PhoneDirectory';
+import SubDirectory from './functionalComponent/SubDirectory';
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <React.StrictMode>
     {/* <App /> */}
-    <PhoneDirectory />
+    {/* <PhoneDirectory /> */}
+    <SubDirectory />
   </React.StrictMode>
 );
 
