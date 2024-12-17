@@ -1,7 +1,7 @@
 
 .grid-container {
     display: grid;
-    grid-template-columns: 40% 30% auto;
+    grid-template-columns: auto 37% 30%;
     margin-bottom: 10px;
 }
 .heading-container {
