@@ -20,6 +20,7 @@ const ShowSubscriber = ({subscribersList, deleteSubscriberHandler}) => {
         <div className="grid-container heading-container">
           <span className="grid-item name-heading">Name</span>
           <span className="grid-item phone-heading">Phone</span>
+          <span className="grid-item phone-heading">Action</span>
         </div>
 
         {subscribersList.map((sub) => {
