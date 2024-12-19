@@ -33,4 +33,31 @@
 }
 .edit-btn {
     color: #0000ff;
-}               
+}  
+
+.search-box-container {
+    margin-top: -42px;
+}
+
+.search-box{
+  padding: 6px;
+  border: 1px solid black;
+  margin-top: 8px;
+  font-size: 17px;
+  margin-left: 110px;
+}
+
+.search-btn{
+    padding: 6px;
+    border: 1px solid black;
+    margin-top: 8px;
+    font-size: 17px;
+    cursor: pointer;
+    background: #ddd;
+}
+
+.cancel-icon{
+    right: 935px;
+    position: absolute;
+    top: 16%;
+}

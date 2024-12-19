@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import AddSubscribers from "./AddSubscribers";
 import ShowSubscriber from "./ShowSubscriber";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
@@ -8,6 +8,12 @@ const SubDirectory = () => {
     { id: 1, name: "Ashok", phone: "8898988898" },
     { id: 2, name: "Kanika", phone: "9999999999" },
   ]);
+
+  const [filteredSubscribersList, setFilteredSubscribersList] = useState(subscribersList);
+  
+  useEffect(() => {
+    setFilteredSubscribersList(subscribersList);
+  }, [subscribersList]);
 
   const addSubscriberHandler = (newSubscriber) => {
     setSubscriberList((prevSubscribersList) => {
@@ -42,6 +48,35 @@ const deleteSubscriberHandler = (subscriberId) => {
     setSubscriberList(updatedSubscribers);
   };
 
+  // const searchHandler = (subscriberName) => {
+  //   const searchedSubscriber = subscribersList.find((subscriber) => subscriber.name === subscriberName);
+  //   if (searchedSubscriber) {
+  //     // alert(`Name: ${searchedSubscriber.name}\nPhone: ${searchedSubscriber.phone}`);
+  //     console.log(`Name: ${searchedSubscriber.name}\nPhone: ${searchedSubscriber.phone}`);
+  //     return searchedSubscriber;
+  //   } else {
+  //     alert("Subscriber not found.");
+  //   }
+  // }
+
+  const searchHandler = (subscriberName) => {
+    if (!subscriberName) {
+      setFilteredSubscribersList(subscribersList); // Reset to full list if search input is empty
+      return;
+    }
+
+    const searchedSubscriber = subscribersList.filter((subscriber) =>
+      subscriber.name.toLowerCase().includes(subscriberName.toLowerCase())
+    );
+
+    if (searchedSubscriber.length > 0) {
+      setFilteredSubscribersList(searchedSubscriber);
+    } else {
+      alert("Subscriber not found.");
+      setFilteredSubscribersList([]);
+    }
+  };
+
   return (
     <Router>
       <div className="main-container">
@@ -50,8 +85,9 @@ const deleteSubscriberHandler = (subscriberId) => {
             path="/"
             element={
               <ShowSubscriber
-                subscribersList={subscribersList}
+                subscribersList={filteredSubscribersList}
                 deleteSubscriberHandler={deleteSubscriberHandler}
+                searchHandler={searchHandler}
               />
             }
           />
