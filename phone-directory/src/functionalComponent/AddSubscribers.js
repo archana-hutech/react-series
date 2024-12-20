@@ -5,12 +5,13 @@ import "./AddSubscribers.css"
 import { useNavigate } from 'react-router-dom';
 
 const AddSubscribers = ({ addSubscriberHandler }) => {
+  const navigate = useNavigate(); // Hook for navigation
+  
   const [subscriber, setSubscriber] = useState({
     id: 0,
     name: '',
     phone: '',
   });
-  const navigate = useNavigate(); // Hook for navigation
 
 
   const inputChangedHandler = (e) => {

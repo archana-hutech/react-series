@@ -9,39 +9,50 @@ const SubDirectory = () => {
     { id: 2, name: "Kanika", phone: "9999999999" },
   ]);
 
-  const [filteredSubscribersList, setFilteredSubscribersList] = useState(subscribersList);
-  
+  const [filteredSubscribersList, setFilteredSubscribersList] =
+    useState(subscribersList);
+
   useEffect(() => {
     setFilteredSubscribersList(subscribersList);
   }, [subscribersList]);
 
+  // const addSubscriberHandler = (newSubscriber) => {
+  //   setSubscriberList((prevSubscribersList) => {
+  //     const newId =
+  //       prevSubscribersList.length > 0
+  //         ? prevSubscribersList[prevSubscribersList.length - 1].id + 1
+  //         : 1;
+  //     newSubscriber.id = newId;
+  //     const updatedSubscribersList = [...prevSubscribersList, newSubscriber];
+  //     console.log("Phone Directory");
+  //     console.log(updatedSubscribersList);
+  //     return updatedSubscribersList;
+  //   });
+  // };
+
   const addSubscriberHandler = (newSubscriber) => {
-    setSubscriberList((prevSubscribersList) => {
-      const newId =
-        prevSubscribersList.length > 0
-          ? prevSubscribersList[prevSubscribersList.length - 1].id + 1
-          : 1;
-      newSubscriber.id = newId;
-      const updatedSubscribersList = [...prevSubscribersList, newSubscriber];
-      console.log("Phone Directory");
-      console.log(updatedSubscribersList);
-      return updatedSubscribersList;
-    });
+    setSubscriberList((prev) => [
+      ...prev,
+      {
+        ...newSubscriber,
+        id: prev.length > 0 ? prev[prev.length - 1].id + 1 : 1,
+      },
+    ]);
   };
 
-//   const deleteSubscriberHandler = (subscriberId) => {
-//     let subscriberIndex = 0;
-//     subscribersList.forEach((subscriber, index) => {
-//       if (subscriber.id === subscriberId) {
-//         subscriberIndex = index;
-//       }
-//     });
-//     let newSubscribers = subscribersList;
-//     newSubscribers.slice(subscriberIndex, 1);
-//     setSubscriberList({ subscriber: newSubscribers });
-//   };
+  //   const deleteSubscriberHandler = (subscriberId) => {
+  //     let subscriberIndex = 0;
+  //     subscribersList.forEach((subscriber, index) => {
+  //       if (subscriber.id === subscriberId) {
+  //         subscriberIndex = index;
+  //       }
+  //     });
+  //     let newSubscribers = subscribersList;
+  //     newSubscribers.slice(subscriberIndex, 1);
+  //     setSubscriberList({ subscriber: newSubscribers });
+  //   };
 
-const deleteSubscriberHandler = (subscriberId) => {
+  const deleteSubscriberHandler = (subscriberId) => {
     const updatedSubscribers = subscribersList.filter(
       (subscriber) => subscriber.id !== subscriberId
     );
@@ -71,7 +82,8 @@ const deleteSubscriberHandler = (subscriberId) => {
 
     if (searchedSubscriber.length > 0) {
       setFilteredSubscribersList(searchedSubscriber);
-    } else {
+    } 
+    else {
       alert("Subscriber not found.");
       setFilteredSubscribersList([]);
     }
@@ -91,10 +103,20 @@ const deleteSubscriberHandler = (subscriberId) => {
               />
             }
           />
-          <Route
+          {/* <Route
             path="/add"
             element={
               <AddSubscribers addSubscriberHandler={addSubscriberHandler} />
+            }
+          /> */}
+
+          <Route
+            path="/add"
+            element={
+              <>
+                {console.log("Navigating to /add route")}
+                <AddSubscribers addSubscriberHandler={addSubscriberHandler} />
+              </>
             }
           />
         </Routes>

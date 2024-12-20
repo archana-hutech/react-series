@@ -21,12 +21,6 @@
     color: #808080;
     text-transform: uppercase;
 }
-  
-.action-btn img {
-    width: 20px;
-    height: 20px;
-    margin: 5px;
-}
 .delete-btn {
     background: red;
     color: black;
@@ -35,29 +29,66 @@
     color: #0000ff;
 }  
 
-.search-box-container {
-    margin-top: -42px;
-}
-
-.search-box{
-  padding: 6px;
-  border: 1px solid black;
-  margin-top: 8px;
-  font-size: 17px;
-  margin-left: 110px;
-}
-
-.search-btn{
-    padding: 6px;
+.search-btn {
+    padding: 10px;
     border: 1px solid black;
-    margin-top: 8px;
-    font-size: 17px;
     cursor: pointer;
     background: #ddd;
+    border:none;
+    border-radius:4px
 }
 
-.cancel-icon{
-    right: 935px;
+.cancel-icon {
+    right: 255px;
     position: absolute;
-    top: 16%;
+    top: 50%;
+    transform: translateY(-50%);
+    cursor: pointer;
 }
+ 
+.action-bar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    margin-bottom: 20px;
+}
+    
+.search-form {
+    flex-grow: 1;
+    display: flex;
+    justify-content: flex-end;
+    max-width: 750px;
+    margin-right: 300px;
+}
+  
+.search-box-container {
+    position: relative;
+    display: flex;
+    width: 100%;
+}
+  
+.search-box {
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    width: 65%;
+    font-size: 17px;
+}
+   
+ /* Responsive Design */
+@media (max-width: 600px) {
+ .action-bar {
+      flex-direction: column;
+      align-items: flex-start;
+}
+  
+.action-bar .add-btn {
+      margin-bottom: 10px;
+ }
+  
+.search-form {
+      width: 70%;
+    }
+}
+  
