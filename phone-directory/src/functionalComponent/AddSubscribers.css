@@ -34,3 +34,9 @@
 .subscriber-info {
     color: #808080;
 }
+
+.error-message {
+    color: red;
+    font-size: 0.9rem;
+    margin-top: 5px;
+}

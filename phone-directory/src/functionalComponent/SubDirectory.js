@@ -114,7 +114,7 @@ const SubDirectory = () => {
             path="/add"
             element={
               <>
-                {console.log("Navigating to /add route")}
+                {/* {console.log("Navigating to /add route")} */}
                 <AddSubscribers addSubscriberHandler={addSubscriberHandler} />
               </>
             }
